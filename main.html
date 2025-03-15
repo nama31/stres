@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление студентами</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6d6a6a;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-color: #c0e0cc;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #97c6a1;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .content {
+            display: flex;
+            justify-content: space-around;
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #c0c0c0;
+            font-size: 40px;
+            text-indent: 80px;
+
+            
+        }
+        .list {
+            width: 40%;
+            height: 100%;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-y: auto;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        button {
+            background-color: #a16542;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #814f32;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span>AIT</span>
+            <div>
+                <button>students</button>
+                <button>stuff</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="list" id="studentsList"></div>
+            <div class="list" id="subjectsList"></div>
+        </div>
+        <div class="buttons">
+            <button id="newStudent">new student</button>
+            <button id="approve">approve</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Заготовка для запроса данных с сервера
+            function fetchData() {
+                // Здесь будет код для запроса данных с сервера
+                console.log("Fetching data from server...");
+                
+                // Временные данные для тестирования
+                const students = ["student 1", "student 2", "student 3", "student 4"];
+                const subjects = ["algebra", "java", "IOS", "CS"];
+                
+                // Заполняем списки
+                updateList("studentsList", students);
+                updateList("subjectsList", subjects);
+            }
+            
+            function updateList(elementId, items) {
+                const listElement = document.getElementById(elementId);
+                listElement.innerHTML = "";
+                items.forEach(item => {
+                    const div = document.createElement("div");
+                    div.textContent = item;
+                    listElement.appendChild(div);
+                });
+            }
+            
+            fetchData();
+        });
+    </script>
+</body>
+</html>
